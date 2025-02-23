@@ -1,0 +1,784 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-family: "Urbanist", sans-serif;
+}
+/* basic rule jo sabhi mai same hai */
+html{
+  font-size: 60.5%;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: "Urbanist", sans-serif;
+}
+
+p,li,a,label{
+  font-family: "Urbanist", sans-serif;
+  font-size:1.8 rem;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+  color:var(--para-color);
+  line-height:1.5;
+
+}
+a{
+  text-decoration:none;
+}
+li{
+  list-style: none;
+}
+
+/* theme jo value lag raha ha repeat ho raha ha*/
+:root{
+--main-color:#0062ff;
+--supporting-color:#ebf3f3;
+--font-color:#424242;
+--bg-color:#f7fcff;
+--heading-color:#000a19;
+--para-color:#504e4d
+--main-color:#0a043c;
+--white-color:#ffffff;
+--btn-hover-bg-color:#504e4d;
+--btn-box-shadow:#003b99;
+--btn-box-shadow:rgba(100,100,111,0.2)0px 7px 29px 0px;
+--footer-bg-color:#040d12;
+}
+
+/* layout */
+
+.container{
+  max-width: 142rem;
+  /* 1rem=10px */
+  margin:0 auto;
+  padding: 9.6rem 2.4rem;
+}
+
+
+/* .section-about .container:first-shild,
+.section-blog .container:first-shild,
+.section-course .container:first-shild,
+.section-contract .container:first-shild,
+.section-why--choose .container:first-shild,
+section-contact .container:first-child{
+padding:6.4rem 0 2.4rem 0;
+}  */
+/* agar parent same ho ya children same ho code ko eliminate kar sakte ha like container first child  and is psuedo class sa short kar sakte ha */
+
+:is(.section-about,.section-blog,.section-course,.section-contract,.section-why--choose,.section-contact--homepage).container:first-child{
+  padding:6.4rem 2.4rem 2.4rem 2.4rem;
+}
+
+.grid{
+  display:grid;
+}
+
+.grid-two--cols{
+  grid-template-columns:repeat(2, 1fr);
+}
+
+.grid-three--cols{
+  grid-template-columns: repeat(3,1fr)
+}
+.grid-four--cols{
+  grid-template-columns: repeat(4,1fr)
+}
+
+/* module reusable */
+.section-common-heading{
+font-size: 3.2rem;
+font-weight:700;
+text-transform: capitalize;
+}
+
+.section-common-subheading{
+  color: var(--heading-color);
+}
+
+.section-common--title{
+  font-size: 2rem;
+  margin:4rem 0 1rem 0;
+}
+
+.fa-brands {
+  padding:2.4rem;
+  background-color:#D2E0FB;
+  font-size:2.4rem;
+  border-radius: 50%;
+  color: yellow;
+}
+
+/* box model ma padding top and bottom work nahi da sakta inline ka sath work karta ho usse inline-block ban do */
+.btn{
+  display:inline-block;
+  padding: 1.2rem 3.2rem;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  border-radius: 0.6rem;
+}
+
+/* states */
+.btn:hover{
+  background-color: var(--btn-hover-bg-color);
+  cursor:pointer;
+  box-shadow:var(--btn-box-shadow);
+}
+
+/* 1 navbar start */
+.section-navbar {
+width: 100%;
+box-shadow:rgb(0,0,0,0.5)0px 6px 24px 0px,
+ rgba(0,0,0,0,0.8) 0px 0px 0px 1px;
+}
+
+.section-navbar .container{
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  padding: 1.8rem 2.4rem;
+}
+
+.section-navbar .navbar ul {
+  display: flex;
+  gap:3.2rem;
+  /* text-transform: capitalize; */
+/* nesting mean tag ka andar tag */
+  & li a{
+    color: var(--heading-color);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size:1.6rem;
+    display:inline-block;
+    /* position relative parent ko deta hai */
+    position: relative;
+
+    &::after {
+      content:"";
+      position: absolute;
+     bottom: -0.3rem;
+     left: 0;
+     width: 0%;
+     border-bottom:0.2rem solid var(--main-color);
+     transition: all 0.3s linear;
+    }
+  }
+  & li a:hover:after{
+    width:100%;
+  }
+}
+
+
+/* end navbar section */
+
+/* 2 hero section */
+main {
+  position:relative;
+  background-image:url("https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3JtMjE4YmF0Y2gxMC1teW50LTEyLmpwZw.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: end;
+}
+
+.section-hero .grid{
+  align-items: center;
+  gap:6.4rem;
+}
+
+  & .hero-subheading{
+    text-transform:uppercase;
+    letter-spacing:0.2rem;
+    font-size: 1.7rem;
+    word-spacing:.2rem;
+    color: var(--bnt-hover-bg-color);
+    font-weight: 700;
+  }
+    & .hero-heading{
+    font-size:5.8rem;
+    line-height: 1.5;
+    font-family:"josh";
+    word-spacing:0.2rem;
+    color:var(--bnt-hover-bg-color);
+   font-weight:900;
+  }
+  & .hero-para{
+    color: var(--white-color);
+   
+}
+
+.section-hero--image img {
+  width: 50%;
+  height:auto;
+  align-items: end;
+}
+
+.custom-shape-divider-bottom-1725620611 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+/* shape divider ha swing */
+.custom-shape-divider-bottom-1725620611 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 12rem;
+}
+
+.custom-shape-divider-bottom-1725620611 .shape-fill {
+  fill: #FFFFFF;
+}
+/* end hero section */
+
+/* 3 start about section */
+
+.section-about .grid{
+  gap:6.4rem;
+}
+
+.section-about .about-div{
+text-align: center;
+
+}
+
+.section-about img{
+  padding:2.4rem;
+  background-color:var(--supporting-color);
+  width:15rem;
+  height:auto ;
+  border-radius: 50%;
+  transition:all 0.3s linear;
+  /* rotaion dikhani ha used transition */
+}
+.about-div .icon:hover > img{
+  transform: rotate(360deg);
+  background:linear-gradient(to right, #0575e6,#021b79);
+}
+/* end about section */
+
+/* 4 course section */
+
+.sectio-course{
+  background-color: var(--bg-color);
+}
+
+.sectio-course .grid{
+  gap:3.2rem;
+}
+
+.section-course .course-div {
+  padding: 3.3rem;
+}
+
+sectio-course .course-div{
+  gap:3.2rem;
+}
+
+.section-course .course-div:hover{
+  box-shadow:var(--btn-box-shadow);
+}
+/* icon fstate and background color change karna hai dyan hoga ki apna psuedo classes pada hai easily target akr sakta hai */
+.course-div:nth-child(2) .icon .fa-solid {
+  color: #000;
+  background-color: #e7f6ef;
+}
+
+.course-div:nth-of-child(3) .icon .fa-solid {
+  color: #000;
+  background-color: red;
+ 
+}
+
+course-div:nth-of-child(4) .icon .fa-solid {
+  color: #000;
+  background-color: red;
+}
+
+course-div:nth-of-child(5) .icon .fa-solid {
+  color: #000;
+  background-color: red;
+}
+/* end course section */
+
+/*5 start why choose phone section  */
+
+.section-why--choose .grid{
+gap: 9.6em;
+}
+
+.why-choose--div{
+  margin-top: 3.2rem;
+}
+
+
+.section-why--choose .text-align--right .why-choose--div{
+  display:flex;
+  flex-direction:column;
+  justify-content:start;
+  align-items: end ;
+  text-align:right ;
+}
+
+.common-text--highlight{
+width:5rem;
+aspect-ratio:1;
+background-color: var(--supporting-color);
+color: var(--main-color);
+display:flex;
+justify-content:center;
+align-self:center;
+font-size:2.4rem;
+font-weight:700 ;
+border-radius:50%;
+}
+
+.choose-center--div img {
+  width:400px;
+  height:500px;
+}
+
+.choose-center-div,figure  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+}
+
+.choose-center--div figure:before, .choose-center--div figure::after {
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  background-color:var(--main-color);
+  width:45rem;
+  height: 45rem;
+  border-radius:50%;
+  z-index:-1;
+}
+
+.choose-center--div figure::before{
+  animation:circle 5s linear infinite;
+  -webkit-animation:circle 5s linear infinite;
+}
+
+@keyframes circle{
+  0% {
+    background-color: #b3d0ff;
+  }
+  25% {
+    background-color: #80b1ff;
+  }
+  50% {
+    background-color: #4d91ff;
+  }
+  75% {
+    background-color: #99c0ff;
+  }
+  100% {
+    background-color: #3381ff;
+  }
+}
+
+.choose-center--div figure::after{
+  width:50rem;
+  height: 50rem;
+  background-color: red;
+  z-index:-2;
+  border:.2rem solid var(--supporting-color);
+}
+
+/* end choose section */
+
+/* blog section */
+
+.section-blog {
+  background-color:var(--bg-color);
+
+  & .grid{
+    gap:6.4rem;
+  }
+
+  & .blog {
+    box-shadow: var(--btn-box-shadow);
+transition: scale .3s linear;
+    
+&:hover{
+ scale:1.1;
+}
+    
+  & .blog-content {
+    padding: 1.4rem 2.4rem 2.4rem;
+  }
+  }
+  
+
+  & img{
+    width: 30%;
+    height:auto;
+    
+    & .blog-date{
+      display:flex;
+      justify-content: space-between;
+      margin-top:1.6rem;
+      font-size:1.4rem;
+
+      & .fa-solid{
+        background-color: transparent;
+        padding: 0;
+      }
+    }
+& .section-common--title{
+  margin-top:0.8rem;
+}
+  }
+}
+
+/* end blog section */
+
+
+
+
+
+
+/* 6 start contact home section  */
+
+.section-contact--homepage{
+  width: 60%;
+  min-height:30rem;
+  margin:0 auto;
+  /* picha box ki shadow aa jati hai */
+  box-shadow: rgba(60,64,67,0.3)0px 1px 2px 0px,
+  rgba(60,64,67,0.15)0px 2px 6px 2px;
+  border-radius:0.2rem ;
+  padding:0 3.2rem;
+  position: relative;
+  bottom: -15rem;
+  z-index:1;
+  background-color: var(--white-color);
+
+  & .grid{
+    align-items: center;
+    gap:6.4rem
+  }
+}
+.contact-title p{
+  font-size: 3.8rem;
+  line-height:1.2;
+}
+.contact-content p{
+  margin:1.2rem 0 2.4rem 0;
+}
+
+.sectio-contact--homepage a{
+  color:var(--white-color);
+  text-transform:capitalize;
+}
+
+.section-contact--homepage .fa-solid {
+  padding:0;
+ color: var(--white-color);
+ background-color:var(--main-color);
+}
+
+.section-contact-homepage img{
+  width:90%;
+  height:auto;
+}
+
+/* end contact section */
+
+/* 8 map wala actual contact page section */
+
+/* formspree website ha iska throw hum bina backend ka message karna ha kar sakte ha form sa and issme limitation ha day ma 100 sa jada mail nahi bhej sakta uska liya paid service lena padta ha uska liya hostinger */
+/* id=gaagankhandelwal@gmail.com and Project500@ */
+
+.section-contact{
+  & .grid{
+    align-items: center;
+    gap:6.4rem
+  }
+}
+
+.mb-3 {
+  margin-bottom:3.2rem;
+}
+
+label{
+  display: block;
+  text-transform:captalize;
+}
+
+contact-content .grid{
+  gap:6.4rem;
+}
+
+input,textarea{
+  width:100%;
+  padding: 1.4rem 2.4rem;
+  font-size: 1.7rem;
+  letter-spacing:1.7rem
+}
+
+/* is tarika sa direct placeholder ko target kar sakte ho */
+::placeholder{
+  font-size:1rem ;
+  letter-spacing:1.7rem
+
+}
+
+.btn-submit{
+  font-size:1.8rem;
+  border:none;
+  text-transform:capitalize ;
+}
+
+input:focus-visible,textarea:focus-visible{
+  outline:0.1rem solid red;
+}
+
+/* end actual contact page section */
+
+/* 7 start footer section */
+footer{
+  background-color: var(--footer-bg-color);
+  padding-top: 15rem;
+}
+
+footer *{
+  color:white;
+}
+footer .grid{
+  text-align: right;
+}
+
+.footer-subheading {
+font-size:2.2rem;
+font-weight:700;
+}
+
+.footer-1--div p{
+margin:1rem 0 3.2rem 0;
+}
+
+.footer-1--div {
+  text-align: left;
+  & .social-footer--icons{
+    display: flex;
+    gap: 2.4rem;
+   
+}
+
+  & .fa-brands {
+    width:5rem;
+    aspect-ratio: 1;
+    background-color: var(--supporting-color);
+    color:var(--bnt-hover-bg-color);
+    border-radius: 50%;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    -ms-border-radius:50;
+    -o-border-radius:50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3sec linear;
+  
+    &:hover{
+      color:var(--supporting-color);
+      background-color: var(--bnt-hover-bg-color);
+      rotate: 360deg;
+    }
+  }
+}
+
+/* end footer section */
+
+
+/*9 scrolbar aa jayega section */
+
+/* width */
+::-webkit-scrollbar{
+  width:1rempx;
+}
+/* track:-usko bolte ha jo ki website ko upper niccha  karta ha*/
+::-webkit-scrollbar-track  {
+  background:var(--supporting-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb{
+  background:var(--main-color);
+  border-radius:50px;
+}
+ /* Handle on hover  */
+::-webkit-scrollbar-tumb:hover{
+  background:var(--heading-color);
+}
+
+/*end scrolbar section */
+
+/* scroll animation and scroll snap */
+
+/* 10 media queries section */
+
+/* ya ha media queries kitna pixel ka nicha jaoage to apka element change kar sakte ho */
+/* responsive check karna ka liya used inspect kare */
+@media(max-width<1400px){
+  html{
+    font-size:56.25%;
+  }
+
+.section-hero img{
+  width:90%;
+}
+@media(width<1220px){
+  html{
+    font-size:54%;
+  }
+
+  :is(.section-about,.section-blog,.section-course,.section-why--choose,.section-contact--homepage)
+    .grid{
+      gap:6.4rem
+    }
+  }
+
+  @media(width<1100px){
+   :is(.section-course,.section-blog) .grid-four--cols{
+   grid-template-columns:repeat(auto-fit, mixmax(250px,1fr));
+   }
+
+.section-why--choose{
+& .choose-left--div{
+  order:2;
+}
+
+& .choose-left--div{
+  order:3;
+}
+
+  & .choose-center--div{
+   order:1;
+
+    &figure::before{
+      width::before{
+        width:0;
+        height:0;
+        background-color: transparent;
+        padding:0;
+      }
+&figure::after{
+  width:0;
+  height:0;
+  background-color: transparent;
+  padding:0;
+}
+    }
+  }
+}
+
+    }
+
+
+  @media(max-width<998px){
+    .section-hero{
+      height: auto;
+   padding-bottom: 5rem;
+
+      & .grid-two--cols{
+        grid-template-columns:1fr;
+
+& .section-hero--content{
+  order:2;
+}
+
+& .section-hero--image{
+  order:1;
+
+  & img{
+    width:50%
+}
+}
+}
+}   
+.section-about .about-div{
+  text-align: left;
+}
+footer .grid-four--cols{
+  grid-template-columns:repeat(3,minmax(100px,1fr));
+
+& .footer-1--div{
+grid-row:2/3;
+grid-column:1/-1;
+margin-top:6.4rem;
+}
+
+
+}
+}
+}
+
+  @media(max-width<768px){
+    .grid-two--cols,
+      & .grid-three--cols{
+        grid-template-columns:1fr;
+      }
+    
+      .section-navbar .container{
+        display: flex;
+        flex-direction:column;
+
+     & .navbar ul{
+       gap:2.4rem;
+
+     }   
+     
+     & .navbar-brand{
+     text-align:center;
+      margin-bottom:2.4rem ;
+     }
+      }
+
+      .section-hero .grid .hero-heading{
+        font-size:3.8rem;
+      }
+
+
+
+.section-why--choose{
+&img{
+  width:30%;
+}
+&.grid{
+  gap:1.4rem;
+}
+
+& .section-why--choose .text-align--right .why-choose--div{
+align-items:start;
+text-align:left;
+}
+& .text-align--right .why-choose--div{
+  align-items: start;
+  text-align: left;
+}
+.section-contact--homepage .btn{
+  display: block;
+  text-align:center;
+}
+
+.contact-title{font-size:2.4rem}
+
+:is(.section-contact--homepage) .container:first-child{
+padding:6.4rem 0rem 2.4rem 0rem;
+}
+    }
+  }
+
+/*end media queries section */
